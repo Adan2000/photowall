@@ -1,46 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './styles/stylesheet.css'
+import {BrowserRouter} from 'react-router-dom'
+import {createStore} from 'redux'
+import rootReducer from './redux/reducer'
+import {Provider} from 'react-redux'
+import App from './Components/App'
+
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 
-class List extends React.Component {
-    render() {
+ReactDOM.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <App/>
+        </BrowserRouter>
+    </Provider>,
+document.getElementById('root'))
 
-        const tasks = this.props.tasks;
-        
-        
-        
-        return <div>
-                      <ol> 
-                         { tasks.map((task, index) => <li key = {index}> {task} </li>)}
-                     </ol>
-                 </div>
-        
+//we first go to the terminal, type in cd .. 
+//we then do npm install react-redux 
 
-    }
+//we wrap everything in our provider
+//we then put the store in our provider
 
-}
-
-class Title extends React.Component {
-    render() {
-        return <h1> Task List </h1>
-    }
-
-}
-
-
-class Main extends React.Component {
-
-    render() {
-        return <div> 
-            <Title/>
-            <List tasks = {['mow the lawn', 'walk the dog']}/>
-            <List tasks = {['hose the driveway', 'finish the laundry']}/>
-         </div>
-
-}
-
-}
-
-ReactDOM.render(<Main/>, document.getElementById('root'));
-
-
+//we pass our store to our Main component, which is the highest component
