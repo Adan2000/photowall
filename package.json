@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^8.4.2",
     "prop-types": "^15.5.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "1.0.17",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
