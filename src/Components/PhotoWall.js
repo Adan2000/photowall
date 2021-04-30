@@ -7,7 +7,6 @@ function PhotoWall(props) {
   return (
     <div>
       <Link className="addIcon" to="/AddPhoto">
-        {" "}
       </Link>
       <div className="photoGrid">
         {props.posts
