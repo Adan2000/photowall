@@ -7,12 +7,10 @@ function Photo(props) {
   return (
     <figure className="figure">
       <Link to={`/single/${post.id}`}>
-        {" "}
         <img className="photo" src={post.imageLink} alt={post.description} />
       </Link>
       <figcaption>
-        {" "}
-        <p> {post.description} </p>{" "}
+        <p> {post.description} </p>
       </figcaption>
       <div className="button-container">
         <button
@@ -20,9 +18,7 @@ function Photo(props) {
             props.removePost(props.index);
             props.history.push("/");
           }}
-        >
-          {" "}
-          Remove{" "}
+        > Remove
         </button>
         <Link className="button" to={`/single/${post.id}`}>
           <div className="comment-count">

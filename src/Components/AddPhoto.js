@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+
 class AddPhoto extends Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit(event) {
     event.preventDefault();
     const imageLink = event.target.elements.link.value;
@@ -18,6 +20,7 @@ class AddPhoto extends Component {
       this.props.onHistory.push("/");
     }
   }
+
   render() {
     return (
       <div>
@@ -32,4 +35,6 @@ class AddPhoto extends Component {
     );
   }
 }
+
+
 export default AddPhoto;
