@@ -38,6 +38,24 @@ export function startAddingComment(comment, postsId) {
   }
 }
 
+export function startLoadingComments() {
+  return (dispatch) => {
+    return database.ref('comments').once('value').then((snapshot) => {
+      let comments = {}
+      snapshot.forEach((childSnapshot) => {
+        comments[childSnapshot.key] = Object.values(childSnapshot.val())
+      })
+      dispatch(loadComments(comments))
+    }) 
+  }
+}
+
+export function loadComments(comments) {
+  return {
+    type: 'LOAD_COMMENTS',
+    comments
+  }
+}
 
 export function loadPosts(posts) {
   return {
