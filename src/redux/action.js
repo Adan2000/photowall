@@ -20,8 +20,7 @@ export function startLoadingPost() {
       posts.push(childSnapshot.val())
     })
     dispatch(loadPosts(posts))
-  }
-}
+  }}
 
 export function startRemovingPosts(index, id) {
   return (dispatch) => {
@@ -31,7 +30,13 @@ export function startRemovingPosts(index, id) {
   }
 }
 
-
+export function startAddingComment(comment, postsId) {
+  return (dispatch) => {
+    return database.ref('comments/'+postId).push(comment).then(() => {
+      dispatch(addComment(comment, postId))
+    })
+  }
+}
 
 
 export function loadPosts(posts) {
