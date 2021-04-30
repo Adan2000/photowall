@@ -1,7 +1,7 @@
-import _posts from "../Components/posts";
+import posts from '../Components/posts';
+
+
 import { combineReducers } from "redux";
-
-
 function comments(state = {}, action) {
   switch (action.type) {
     case "ADD_COMMENT":
@@ -13,17 +13,27 @@ function comments(state = {}, action) {
           [action.postId]: [...state[action.postId], action.comment],
         };
       }
-      case 'LOAD_COMMENTS': return action.comments
-    default: return state;
+    case "LOAD_COMMENTS":
+      return action.comments;
+
+    default:
+      return state;
   }
+  return state;
 }
-function posts(state = _posts, action) {
+function post(state = posts, action) {
   switch (action.type) {
-    case "REMOVE_POST": return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
-    case "ADD_POST": return [...state, action.post];
-    case 'LOAD_POST': return action.posts
-    default: return state;
-    
+    case "REMOVE_POST":
+      return [
+        ...state.slice(0, action.index),
+        ...state.slice(action.index + 1),
+      ];
+    case "ADD_POST":
+      return [...state, action.post];
+    case "LOAD_POSTS":
+      return action.posts;
+    default:
+      return state;
   }
 }
 const rootReducer = combineReducers({ posts, comments });

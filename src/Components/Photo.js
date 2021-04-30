@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
 function Photo(props) {
   const post = props.post;
   return (
@@ -17,7 +16,7 @@ function Photo(props) {
       <div className="button-container">
         <button
           onClick={() => {
-            props.startRemovePost(props.index, post.id);
+            props.startRemovingPost(props.index, post.id);
             props.history.push("/");
           }}
         >
